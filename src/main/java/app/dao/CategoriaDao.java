@@ -152,21 +152,21 @@ public class CategoriaDao extends BaseDao {
 	}
 
 	public Collection<Categoria> listar() throws DaoExcepcion {
-		Collection<Categoria> c = new ArrayList<Categoria>();
+		Collection<Categoria> listaCategoria = new ArrayList<Categoria>();
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
 			con = ConexionDB.obtenerConexion();
-			String query = "select idCateoria,nombre,descripcion from categoria order by nombre";
+			String query = "select idCategoria,nombre,descripcion from categoria order by nombre";
 			stmt = con.prepareStatement(query);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				Categoria vo = new Categoria();
-				vo.setIdCategoria(rs.getInt("idCateoria"));
+				vo.setIdCategoria(rs.getInt("idCategoria"));
 				vo.setNombre(rs.getString("nombre"));
 				vo.setDescripcion(rs.getString("descripcion"));
-				c.add(vo);
+				listaCategoria.add(vo);
 			}
 
 		} catch (SQLException e) {
@@ -177,7 +177,7 @@ public class CategoriaDao extends BaseDao {
 			this.cerrarStatement(stmt);
 			this.cerrarConexion(con);
 		}
-		return c;
+		return listaCategoria;
 	}
 
 }

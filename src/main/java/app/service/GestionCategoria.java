@@ -24,7 +24,6 @@ public class GestionCategoria {
 	public static Categoria insertar(String nombre, String descripcion)
 			throws DaoExcepcion {
 		CategoriaDao dao = new CategoriaDao();
-
 		Categoria vo = new Categoria();
 		vo.setNombre(nombre);
 		vo.setDescripcion(descripcion);
