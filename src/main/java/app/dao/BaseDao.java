@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BaseDao {
-
+    //-------------------- CAPA DAO --------------------------------
     protected void cerrarConexion(Connection con) throws RuntimeException {
         try {
             if (con != null && !con.isClosed()) {

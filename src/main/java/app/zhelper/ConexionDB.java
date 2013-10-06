@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConexionDB {
 
     public static Connection obtenerConexion() throws SQLException {
-
+        //---------------- CAPA DE PERSISTENCIA -----------------------
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

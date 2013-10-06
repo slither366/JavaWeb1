@@ -1,6 +1,4 @@
-
 package app.dao;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +14,7 @@ public class CategoriaDao extends BaseDao {
 
 	public Collection<Categoria> buscarPorNombre(String nombre)
 			throws DaoExcepcion {
-		String query = "select id, nombre, descripcion from categoria where nombre like ?";
+		String query = "select idCategoria, nombre, descripcion from categoria where nombre like ?";
 		Collection<Categoria> lista = new ArrayList<Categoria>();
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -46,15 +44,16 @@ public class CategoriaDao extends BaseDao {
 	}
 
 	public Categoria insertar(Categoria vo) throws DaoExcepcion {
-		String query = "insert into categoria(nombre,descripcion) values (?,?)";
+		String query = "insert into categoria(nombre,descripcion) values (?,?,?)";
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
 			con = ConexionDB.obtenerConexion();
 			stmt = con.prepareStatement(query);
-			stmt.setString(1, vo.getNombre());
-			stmt.setString(2, vo.getDescripcion());
+			stmt.setInt(1, vo.getIdCategoria());
+			stmt.setString(2, vo.getNombre());
+                        stmt.setString(3, vo.getDescripcion());
 			int i = stmt.executeUpdate();
 			if (i != 1) {
 				throw new SQLException("No se pudo insertar");
@@ -86,7 +85,7 @@ public class CategoriaDao extends BaseDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String query = "select id_categoria, nombre, descripcion from categoria where id_categoria=?";
+			String query = "select idCategoria, nombre, descripcion from categoria where idCategoria=?";
 			con = ConexionDB.obtenerConexion();
 			stmt = con.prepareStatement(query);
 			stmt.setInt(1, idCategoria);

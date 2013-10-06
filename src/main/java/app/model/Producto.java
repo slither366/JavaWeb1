@@ -1,7 +1,7 @@
 package app.model;
 
 public class Producto {
-
+    //----------------------- CAPA MODEL -------------------------------
     private int idProducto;
     private String nombre;
     private String descripcion;
