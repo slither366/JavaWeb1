@@ -1,5 +1,5 @@
 
-package app.service;
+package app.negocio;
 
 import app.dao.CategoriaDao;
 import app.dao.DaoExcepcion;
@@ -11,7 +11,7 @@ public class GestionCategoria {
     public static void main(String[] args) throws DaoExcepcion {
         //Categoria catOfi=GestionCategoria.insertar("OFICINA", "prueba1");
         //Categoria catOfi2=GestionCategoria.insertar("OFICINA2", "prueba1");
-        GestionCategoria.Listar();
+        GestionCategoria.listar();
         
     }
     
@@ -53,8 +53,8 @@ public class GestionCategoria {
 		return dao.actualizar(vo);
 	}
 
-	public Collection<Categoria> listar() throws DaoExcepcion {
-		CategoriaDao dao = new CategoriaDao();
+	public static Collection<Categoria> listar() throws DaoExcepcion {
+		CategoriaDao dao = new CategoriaDao();     
 		return dao.listar();
 	}
         
